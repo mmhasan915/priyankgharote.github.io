@@ -22,180 +22,327 @@
   --border-light:#F5EBE2;
   --cream:#FFFAF5;
   --white:#ffffff;
+  --shadow: 0 20px 40px rgba(28, 16, 8, 0.08);
+  --shadow-sm: 0 5px 15px rgba(28, 16, 8, 0.04);
+  --glass: rgba(255, 255, 255, 0.85);
+  --radius: 16px;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden;}
 
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(255,250,245,0.96);backdrop-filter:blur(16px);
-  border-bottom:1.5px solid var(--border);
+  background:rgba(255,250,245,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-light);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 5rem;height:68px;
+  padding:0 5rem;height:80px;
+  transition: all 0.3s ease;
 }
 .nav-brand{display:flex;align-items:center;gap:14px;}
 .nav-monogram{
-  width:40px;height:40px;border-radius:10px;background:var(--saffron);
+  width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg, var(--saffron), var(--saffron-mid));
   display:flex;align-items:center;justify-content:center;
-  font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--white);
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);
+  box-shadow: var(--shadow-sm);
 }
-.nav-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;font-weight:500;transition:color 0.2s;}
-.nav-links a:hover{color:var(--saffron);}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--ink);letter-spacing:0.02em;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items: center;}
+.nav-links a{font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;font-weight:600;transition:all 0.3s;}
+.nav-links a:hover{color:var(--saffron);transform: translateY(-1px);}
 
-.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:68px;}
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 101;
+}
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: var(--ink);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1.2fr 0.8fr;padding:120px 5rem 5rem;
+  align-items: center;gap: 4rem;background: radial-gradient(circle at 10% 20%, var(--saffron-pale) 0%, var(--cream) 100%);
+}
 .hero-left{
-  background:var(--saffron);padding:5rem 5rem 5rem 6rem;
-  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:center;position:relative;
 }
-.hero-left::before{
-  content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;
-  border-radius:50%;background:rgba(255,255,255,0.07);
-}
-.hero-left::after{
-  content:'';position:absolute;bottom:-100px;left:-50px;width:260px;height:260px;
-  border-radius:50%;background:rgba(0,0,0,0.06);
-}
-.hero-eyebrow{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:1.8rem;font-weight:500;}
+.hero-eyebrow{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.5rem;font-weight:600;}
 .hero-name{
-  font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,4.8rem);
-  line-height:1.0;color:var(--white);margin-bottom:0.5rem;font-weight:600;
+  font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,6vw,5.5rem);
+  line-height:1.05;color:var(--ink);margin-bottom:1.5rem;font-weight:600;
 }
-.hero-name em{font-style:italic;font-weight:400;display:block;}
+.hero-name em{font-style:italic;font-weight:400;color: var(--saffron);display:block;}
 .hero-role{
-  font-size:0.9rem;color:rgba(255,255,255,0.85);font-weight:300;letter-spacing:0.06em;
-  margin-bottom:3rem;margin-top:1rem;
-  border-left:2px solid rgba(255,255,255,0.4);padding-left:1rem;
+  font-size:1.1rem;color:var(--ink-mid);font-weight:400;letter-spacing:0.02em;
+  margin-bottom:2rem;border-left:3px solid var(--saffron);padding-left:1.5rem;
 }
-.hero-stats{display:flex;gap:0;margin-bottom:3.5rem;border-top:1px solid rgba(255,255,255,0.2);border-bottom:1px solid rgba(255,255,255,0.2);}
-.stat{flex:1;padding:1.3rem 1.4rem;border-right:1px solid rgba(255,255,255,0.2);}
-.stat:last-child{border-right:none;}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--white);line-height:1;font-weight:600;}
-.stat-label{font-size:0.67rem;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;}
-.hero-contact{display:flex;flex-direction:column;gap:9px;}
-.hero-contact-item{font-size:0.83rem;color:rgba(255,255,255,0.82);display:flex;align-items:center;gap:10px;}
-.hero-contact-item span{background:rgba(255,255,255,0.15);border-radius:6px;padding:3px 8px;font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--white);font-weight:600;}
 
-.hero-right{background:var(--cream);padding:5rem 4rem 5rem 5rem;display:flex;flex-direction:column;justify-content:center;}
-.live-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--saffron-light);border:1.5px solid var(--border);
-  color:var(--saffron-deep);font-size:0.74rem;font-weight:600;letter-spacing:0.05em;
-  padding:7px 16px;border-radius:100px;margin-bottom:2.5rem;width:fit-content;
+/* Hero Actions */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
 }
-.live-dot{width:7px;height:7px;border-radius:50%;background:var(--saffron);animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
-.mini-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:1.2rem;}
-.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:2.5rem;}
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-mid));
+  color: var(--white);
+  border: none;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  opacity: 0.95;
+}
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--saffron-deep);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+.social-link:hover {
+  transform: translateY(-2px);
+  background: var(--saffron-light);
+  color: var(--saffron);
+  border-color: var(--saffron);
+  box-shadow: var(--shadow);
+}
+
+.hero-stats{display:flex;gap:1.5rem;margin-bottom:3.5rem;}
+.stat{
+  background: var(--glass);border: 1px solid var(--border-light);border-radius: var(--radius);
+  padding:1.5rem;box-shadow: var(--shadow-sm);flex:1;
+  transition: transform 0.3s ease;
+}
+.stat:hover{transform: translateY(-5px);border-color: var(--saffron-mid);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--saffron);line-height:1;font-weight:600;}
+.stat-label{font-size:0.75rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:6px;font-weight:500;}
+
+.hero-contact{
+  display:flex;flex-wrap:wrap;gap:1rem;background: var(--glass);padding: 1.5rem;
+  border-radius: var(--radius);border: 1px solid var(--border-light);box-shadow: var(--shadow-sm);
+}
+.hero-contact-item{font-size:0.85rem;color:var(--ink-mid);display:flex;align-items:center;gap:10px;font-weight:500;}
+.hero-contact-item span{background:var(--saffron-light);border-radius:6px;padding:4px 10px;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--saffron-deep);font-weight:600;}
+
+.hero-right{
+  position: relative;display: flex;justify-content: center;align-items: center;
+}
+.hero-image-wrapper{
+  position: relative;width: 100%;max-width: 420px;
+  border-radius: var(--radius);overflow: visible;
+}
+.hero-image-wrapper::before{
+  content: '';position: absolute;top: 20px;left: 20px;right: -20px;bottom: -20px;
+  background: var(--saffron-light);border: 2px solid var(--border);
+  border-radius: var(--radius);z-index: 1;
+}
+.hero-img{
+  position: relative;width: 100%;border-radius: var(--radius);z-index: 2;
+  box-shadow: var(--shadow);transition: transform 0.5s ease;
+  object-fit: cover;aspect-ratio: 1 / 1.5;
+}
+.hero-image-wrapper:hover .hero-img{
+  transform: translate(-10px, -10px);
+}
+
+.about-sec{
+  padding: 6rem 5rem;background: var(--white);
+  display: grid;grid-template-columns: 0.8fr 1.2fr;gap: 4rem;align-items: center;
+  border-top: 1px solid var(--border-light);
+}
+.about-left{
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-deep));
+  padding: 3.5rem;border-radius: var(--radius);color: var(--white);
+  box-shadow: var(--shadow);
+}
+.about-left .mini-title{color: var(--white);font-size: 1.8rem;margin-bottom: 1.5rem;font-family: 'Cormorant Garamond', serif;}
+.about-left p{font-size: 1rem;line-height: 1.8;opacity: 0.95;}
+
+.about-right .mini-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:1.5rem;}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 .comp-pill{
-  display:flex;align-items:center;gap:8px;background:var(--white);
-  border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;
-  font-size:0.77rem;color:var(--ink-mid);font-weight:500;transition:all 0.2s;
+  display:flex;align-items:center;gap:12px;background:var(--saffron-pale);
+  border:1px solid var(--border);border-radius:12px;padding:14px 18px;
+  font-size:0.85rem;color:var(--ink-mid);font-weight:500;transition:all 0.3s ease;
 }
-.comp-pill:hover{border-color:var(--saffron);background:var(--saffron-pale);color:var(--saffron-deep);transform:translateY(-2px);}
-.comp-dot{width:5px;height:5px;border-radius:50%;background:var(--saffron);flex-shrink:0;}
+.comp-pill:hover{border-color:var(--saffron);background:var(--white);color:var(--saffron-deep);transform:translateY(-3px);box-shadow: var(--shadow-sm);}
+.comp-dot{width:6px;height:6px;border-radius:50%;background:var(--saffron);flex-shrink:0;}
 
-section{padding:6rem 6rem;}
-.sec-tag{display:inline-flex;align-items:center;gap:8px;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:0.6rem;}
-.sec-tag::before{content:'';display:block;width:24px;height:2px;background:var(--saffron);}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;color:var(--ink);font-weight:600;margin-bottom:3.5rem;}
+section{padding:8rem 5rem;}
+.sec-tag{display:inline-flex;align-items:center;gap:12px;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:1rem;}
+.sec-tag::before{content:'';display:block;width:30px;height:2px;background:var(--saffron);}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,4vw,3.5rem);line-height:1.15;color:var(--ink);font-weight:600;margin-bottom:4rem;}
 .sec-title em{font-style:italic;color:var(--saffron);font-weight:400;}
 
-#experience{background:var(--white);}
+#experience{background:var(--cream);}
+.exp-timeline{position: relative;max-width: 1000px;margin: 0 auto;}
+.exp-timeline::before{
+  content: '';position: absolute;top: 0;bottom: 0;left: 20px;width: 2px;
+  background: var(--border);
+}
 .exp-item{
-  display:grid;grid-template-columns:220px 1fr;gap:3.5rem;
-  padding:2.8rem 0;border-bottom:1.5px solid var(--border-light);
+  position: relative;padding-left: 60px;margin-bottom: 4rem;
 }
-.exp-item:last-child{border-bottom:none;padding-bottom:0;}
-.exp-item:first-child{padding-top:0;}
-.exp-period{font-size:0.74rem;color:var(--muted);font-weight:500;letter-spacing:0.04em;margin-bottom:5px;}
-.exp-co{font-size:0.84rem;font-weight:600;color:var(--saffron-deep);margin-bottom:8px;line-height:1.3;}
-.exp-badge{display:inline-block;background:var(--saffron-light);color:var(--saffron-deep);font-size:0.67rem;font-weight:600;padding:3px 10px;border-radius:100px;letter-spacing:0.05em;}
-.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2;}
-.exp-subrole{font-size:0.79rem;color:var(--muted);margin-bottom:1rem;}
-.exp-points{list-style:none;display:flex;flex-direction:column;gap:7px;}
-.exp-points li{font-size:0.85rem;color:var(--ink-mid);padding-left:1.3rem;position:relative;line-height:1.7;}
-.exp-points li::before{content:'›';position:absolute;left:0;color:var(--saffron);font-size:1.1rem;line-height:1.4;font-weight:600;}
+.exp-item::before{
+  content: '';position: absolute;left: 11px;top: 8px;width: 20px;height: 20px;
+  border-radius: 50%;background: var(--white);border: 4px solid var(--saffron);
+  z-index: 2;transition: all 0.3s ease;
+}
+.exp-item:hover::before{
+  background: var(--saffron);box-shadow: 0 0 0 5px var(--saffron-light);
+}
+.exp-header{display: flex;justify-content: space-between;align-items: flex-start;margin-bottom: 1rem;flex-wrap: wrap;gap: 1rem;}
+.exp-period{font-size:0.8rem;color:var(--saffron-deep);font-weight:600;letter-spacing:0.05em;background: var(--saffron-light);padding: 4px 12px;border-radius: 20px;}
+.exp-co{font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.exp-badge{display:inline-block;background:var(--saffron-pale);color:var(--muted);font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:100px;border: 1px solid var(--border);}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--ink);line-height:1.2;}
+.exp-subrole{font-size:0.9rem;color:var(--muted);margin-bottom:1.5rem;font-weight: 500;}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.exp-points li{font-size:0.9rem;color:var(--ink-mid);padding-left:1.5rem;position:relative;line-height:1.8;}
+.exp-points li::before{content:'→';position:absolute;left:0;color:var(--saffron);font-weight:600;}
 
-#education{background:var(--saffron-pale);}
-.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.2rem;margin-bottom:3rem;}
+#education{background:var(--white);}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin-bottom:4rem;}
 .edu-card{
-  background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.8rem;
-  transition:transform 0.2s,border-color 0.2s;position:relative;overflow:hidden;
+  background:var(--saffron-pale);border:1px solid var(--border-light);border-radius:var(--radius);padding:2.5rem;
+  transition:all 0.3s ease;position:relative;overflow:hidden;box-shadow: var(--shadow-sm);
 }
-.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--saffron);}
-.edu-card:hover{transform:translateY(-5px);border-color:var(--saffron-mid);}
-.edu-year{font-size:0.69rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:6px;}
-.edu-degree{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.25;}
-.edu-inst{font-size:0.79rem;color:var(--saffron-deep);font-weight:500;}
-.edu-score{margin-top:8px;font-size:0.74rem;color:var(--muted);}
-.proj-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.2rem;}
-.proj-card{background:var(--white);border:1.5px solid var(--border);border-radius:0 12px 12px 0;border-left:4px solid var(--saffron);padding:1.5rem;}
-.proj-tag{font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:5px;}
-.proj-title{font-size:0.92rem;font-weight:600;color:var(--ink);margin-bottom:5px;line-height:1.3;}
-.proj-desc{font-size:0.79rem;color:var(--muted);line-height:1.65;}
+.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--saffron);}
+.edu-card:hover{transform:translateY(-10px);border-color:var(--saffron);box-shadow: var(--shadow);}
+.edu-year{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--saffron-deep);font-weight:600;margin-bottom:1rem;}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:0.5rem;line-height:1.3;}
+.edu-inst{font-size:0.9rem;color:var(--ink-mid);font-weight:500;}
+.edu-score{margin-top:1rem;font-size:0.8rem;color:var(--muted);background: var(--white);padding: 4px 10px;border-radius: 6px;display: inline-block;border: 1px solid var(--border-light);}
 
-#certifications{background:var(--ink);}
-#certifications .sec-tag{color:#F07830;}
-#certifications .sec-tag::before{background:#F07830;}
+.proj-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
+.proj-card{background:var(--cream);border:1px solid var(--border-light);border-radius:var(--radius);border-left:5px solid var(--saffron);padding:2rem;box-shadow: var(--shadow-sm);transition: all 0.3s ease;}
+.proj-card:hover{transform: translateY(-5px);box-shadow: var(--shadow);border-left-width: 8px;}
+.proj-tag{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:0.8rem;}
+.proj-title{font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.8rem;line-height:1.3;}
+.proj-desc{font-size:0.85rem;color:var(--ink-mid);line-height:1.7;}
+
+#certifications{background:var(--ink);color: var(--white);}
+#certifications .sec-tag{color:var(--saffron-mid);}
+#certifications .sec-tag::before{background:var(--saffron-mid);}
 #certifications .sec-title{color:var(--white);}
-#certifications .sec-title em{color:#F07830;}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem;}
+#certifications .sec-title em{color:var(--saffron-mid);}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
 .cert-card{
-  background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
-  border-radius:14px;padding:1.6rem;transition:background 0.2s,border-color 0.2s;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);padding:2rem;transition:all 0.3s ease;
 }
-.cert-card:hover{background:rgba(232,101,10,0.12);border-color:rgba(232,101,10,0.4);}
+.cert-card:hover{background:rgba(232,101,10,0.08);border-color:var(--saffron);transform: translateY(-5px);}
 .cert-icon{
-  width:42px;height:42px;border-radius:10px;background:rgba(232,101,10,0.2);
-  display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1rem;
+  width:48px;height:48px;border-radius:12px;background:rgba(232,101,10,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.5rem;
 }
-.cert-title{font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:5px;line-height:1.3;}
-.cert-sub{font-size:0.77rem;color:rgba(255,255,255,0.5);line-height:1.55;}
+.cert-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.8rem;line-height:1.4;}
+.cert-sub{font-size:0.8rem;color:rgba(255,255,255,0.6);line-height:1.6;}
 
-#awards{background:var(--white);}
-.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:4rem;}
+#awards{background:var(--cream);}
+.awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-bottom:4rem;}
 .award-card{
-  background:var(--saffron-light);border:1.5px solid var(--border);
-  border-radius:16px;padding:2rem 1.5rem;text-align:center;transition:transform 0.2s;
+  background:var(--white);border:1px solid var(--border-light);
+  border-radius:var(--radius);padding:2.5rem 1.5rem;text-align:center;transition:all 0.3s ease;box-shadow: var(--shadow-sm);
 }
-.award-card:hover{transform:translateY(-5px);}
+.award-card:hover{transform:translateY(-10px);box-shadow: var(--shadow);border-color: var(--saffron);}
 .award-ring{
-  width:54px;height:54px;border-radius:50%;background:var(--white);
-  border:2px solid var(--saffron-mid);display:flex;align-items:center;justify-content:center;
-  margin:0 auto 1rem;font-size:1.3rem;
+  width:60px;height:60px;border-radius:50%;background:var(--saffron-light);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.5rem;font-size:1.5rem;box-shadow: var(--shadow-sm);
 }
-.award-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.3;}
-.award-year{font-size:0.71rem;color:var(--muted);font-weight:500;}
-.tag{padding:8px 18px;border-radius:100px;font-size:0.77rem;font-weight:600;display:inline-block;}
-.tag-s{background:var(--saffron-light);color:var(--saffron-deep);border:1.5px solid var(--border);}
-.tag-g{background:var(--gold-light);color:#7A5000;border:1.5px solid #EDD9A0;}
+.award-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:0.5rem;line-height:1.3;}
+.award-year{font-size:0.8rem;color:var(--muted);font-weight:600;}
+
+.tag{padding:8px 20px;border-radius:100px;font-size:0.8rem;font-weight:600;display:inline-block;transition: all 0.3s ease;}
+.tag:hover{transform: scale(1.05);}
+.tag-s{background:var(--white);color:var(--saffron-deep);border:1px solid var(--border);box-shadow: var(--shadow-sm);}
+.tag-g{background:var(--gold-light);color:#7A5000;border:1px solid #EDD9A0;box-shadow: var(--shadow-sm);}
 
 footer{
-  background:var(--saffron);padding:4rem 6rem;
+  background:var(--ink);padding:5rem;
   display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
-.footer-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);margin-bottom:4px;}
-.footer-sub{font-size:0.82rem;color:rgba(255,255,255,0.75);}
-.footer-right{display:flex;flex-direction:column;gap:8px;text-align:right;}
-.footer-right a{font-size:0.85rem;color:rgba(255,255,255,0.9);text-decoration:none;font-weight:500;}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.footer-sub{font-size:0.9rem;color:rgba(255,255,255,0.6);}
+.footer-right{display:flex;flex-direction:column;gap:15px;text-align:right;align-items: flex-end;}
+.footer-right a{font-size:0.9rem;color:var(--saffron-mid);text-decoration:none;font-weight:600;transition:color 0.3s;}
 .footer-right a:hover{color:var(--white);}
-.footer-loc{font-size:0.74rem;color:rgba(255,255,255,0.6);}
+.footer-loc{font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top: 5px;}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);}
 .reveal.in{opacity:1;transform:none;}
 .d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
 
 @media(max-width:960px){
-  .hero{grid-template-columns:1fr;}
-  .hero-left,.hero-right{padding:4rem 2rem;}
+  .hero{grid-template-columns:1fr;padding-top: 100px;text-align: center;}
+  .hero-left{align-items: center;}
+  .hero-role{border-left: none;padding-left: 0;text-align: center;}
+  .hero-actions{justify-content: center;}
+  .hero-stats{flex-direction: column;width: 100%;}
+  .hero-right{order: -1;margin-bottom: 2rem;}
+  .hero-img{max-width: 280px;}
+  .about-sec{grid-template-columns: 1fr;}
   section{padding:5rem 2rem;}
-  nav{padding:0 2rem;}
-  .exp-item{grid-template-columns:1fr;gap:0.6rem;}
-  .awards-grid{grid-template-columns:repeat(2,1fr);}
-  footer{grid-template-columns:1fr;padding:3rem 2rem;text-align:center;}
-  .footer-right{text-align:center;}
+  nav{padding:0 2rem;height: 70px;}
+  
+  .menu-toggle { display: flex; }
+  .nav-links { 
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 70px;left: 0;right: 0;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-light);
+    gap: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  .nav-links.active { display: flex; }
+  
+  /* Hamburger Animation */
+  .menu-toggle.open .bar:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.open .bar:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  .exp-timeline::before{left: 10px;}
+  .exp-item{padding-left: 35px;}
+  .exp-item::before{left: 1px;}
+  .exp-header{flex-direction: column;align-items: flex-start;}
+  footer{grid-template-columns:1fr;padding:4rem 2rem;text-align:center;}
+  .footer-right{text-align:center;align-items: center;}
 }
 </style>
 </head>
@@ -206,6 +353,13 @@ footer{
     <div class="nav-monogram">PAG</div>
     <span class="nav-name">Priyank Ambar Gharote</span>
   </div>
+  
+  <div class="menu-toggle" id="mobile-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
@@ -215,15 +369,24 @@ footer{
 </nav>
 
 <div class="hero">
-  <div class="hero-left">
+  <div class="hero-left reveal">
     <p class="hero-eyebrow">Senior Manager · Renewable Energy · Maharashtra</p>
     <h1 class="hero-name">Priyank<em>Ambar Gharote</em></h1>
     <div class="hero-role">Business Development &nbsp;·&nbsp; Energy Trading &nbsp;·&nbsp; Consulting</div>
+    
+    <div class="hero-actions">
+      <a href="resume.pdf" class="btn btn-primary" download>Download CV</a>
+      <a href="https://www.linkedin.com/in/priyank-ambar-gharote-8a631569" target="_blank" class="social-link" title="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      </a>
+    </div>
+
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">9+</div><div class="stat-label">Years Exp.</div></div>
       <div class="stat"><div class="stat-num">RE</div><div class="stat-label">Sector Focus</div></div>
       <div class="stat"><div class="stat-num">MH</div><div class="stat-label">Region Head</div></div>
     </div>
+    
     <div class="hero-contact">
       <div class="hero-contact-item"><span>Phone</span> +91 9404667906</div>
       <div class="hero-contact-item"><span>Email</span> priyank.gharote3@gmail.com</div>
@@ -231,8 +394,22 @@ footer{
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="live-badge"><span class="live-dot"></span> Hero Future Energies · Active</div>
+  <div class="hero-right reveal d1">
+    <div class="hero-image-wrapper">
+      <img src="my_image.jpeg" alt="Priyank Ambar Gharote" class="hero-img">
+    </div>
+  </div>
+</div>
+
+<section class="about-sec">
+  <div class="about-left reveal">
+    <p class="mini-title">About Me</p>
+    <p>Result-oriented professional with 9+ years driving growth in Renewable Energy, Business Analytics, Energy Trading, and Consulting across India's leading energy organisations.</p>
+    <div class="live-badge" style="margin-top: 2rem; background: rgba(255,255,255,0.2); border: none; color: white;">
+      <span class="live-dot" style="background: white;"></span> Hero Future Energies · Active
+    </div>
+  </div>
+  <div class="about-right reveal d1">
     <p class="mini-title">Core Competencies</p>
     <div class="comp-grid">
       <div class="comp-pill"><span class="comp-dot"></span>Business Intelligence</div>
@@ -244,20 +421,24 @@ footer{
       <div class="comp-pill"><span class="comp-dot"></span>Team Management</div>
       <div class="comp-pill"><span class="comp-dot"></span>Client Relationships</div>
     </div>
-    <p style="font-size:0.87rem;color:var(--muted);line-height:1.8;max-width:380px;">Result-oriented professional with 9+ years driving growth in Renewable Energy, Business Analytics, Energy Trading, and Consulting across India's leading energy organisations.</p>
   </div>
-</div>
+</section>
 
 <section id="experience">
-  <div class="reveal"><div class="sec-tag">Work Experience</div><h2 class="sec-title">A decade of<br><em>impactful leadership</em></h2></div>
+  <div class="reveal">
+    <div class="sec-tag">Work Experience</div>
+    <h2 class="sec-title">A decade of<br><em>impactful leadership</em></h2>
+  </div>
 
-  <div class="exp-item reveal d1">
-    <div>
-      <p class="exp-period">May 2023 – Present</p>
-      <p class="exp-co">Hero Future Energies Pvt. Ltd.<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">Renewable Arm of Hero Group</span></p>
-      <span class="exp-badge">Current Role</span>
-    </div>
-    <div>
+  <div class="exp-timeline">
+    <div class="exp-item reveal d1">
+      <div class="exp-header">
+        <div>
+          <p class="exp-co">Hero Future Energies Pvt. Ltd.</p>
+          <p class="exp-badge">Renewable Arm of Hero Group</p>
+        </div>
+        <p class="exp-period">May 2023 – Present</p>
+      </div>
       <p class="exp-role">Senior Manager — Commercial &amp; Industrial</p>
       <p class="exp-subrole">Business Development Head, Maharashtra</p>
       <ul class="exp-points">
@@ -268,15 +449,15 @@ footer{
         <li>Managed power sales from existing RE projects under third-party arrangements, aligned to annual operating plans.</li>
       </ul>
     </div>
-  </div>
 
-  <div class="exp-item reveal d1">
-    <div>
-      <p class="exp-period">Jan 2016 – May 2023</p>
-      <p class="exp-co">Kreate Energy I Pvt. Ltd.<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">Mittal Processor Pvt. Ltd., Pune</span></p>
-      <span class="exp-badge">7 Years</span>
-    </div>
-    <div>
+    <div class="exp-item reveal d1">
+      <div class="exp-header">
+        <div>
+          <p class="exp-co">Kreate Energy I Pvt. Ltd.</p>
+          <p class="exp-badge">Mittal Processor Pvt. Ltd., Pune</p>
+        </div>
+        <p class="exp-period">Jan 2016 – May 2023</p>
+      </div>
       <p class="exp-role">Power &amp; Natural Gas Procurement Consultant</p>
       <p class="exp-subrole">Business Development Head</p>
       <ul class="exp-points">
@@ -286,15 +467,15 @@ footer{
         <li>Managed state teams for effective business strategy implementation; reported directly to MD and VP.</li>
       </ul>
     </div>
-  </div>
 
-  <div class="exp-item reveal d2">
-    <div>
-      <p class="exp-period">Feb 2016 – Jan 2017</p>
-      <p class="exp-co">Manikaran Power Ltd.<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">Mumbai</span></p>
-      <span class="exp-badge">BD</span>
-    </div>
-    <div>
+    <div class="exp-item reveal d2">
+      <div class="exp-header">
+        <div>
+          <p class="exp-co">Manikaran Power Ltd.</p>
+          <p class="exp-badge">Mumbai</p>
+        </div>
+        <p class="exp-period">Feb 2016 – Jan 2017</p>
+      </div>
       <p class="exp-role">Power Procurement Consultant</p>
       <p class="exp-subrole">Business Development</p>
       <ul class="exp-points">
@@ -303,15 +484,15 @@ footer{
         <li>Managed client requirement gathering and finalization of functional specifications.</li>
       </ul>
     </div>
-  </div>
 
-  <div class="exp-item reveal d2">
-    <div>
-      <p class="exp-period">Jan 2006 – Aug 2008</p>
-      <p class="exp-co">ShriKrupa Calibration &amp; Service Centre<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">NABL Certified · Amravati</span></p>
-      <span class="exp-badge">Early Career</span>
-    </div>
-    <div>
+    <div class="exp-item reveal d2">
+      <div class="exp-header">
+        <div>
+          <p class="exp-co">ShriKrupa Calibration &amp; Service Centre</p>
+          <p class="exp-badge">NABL Certified · Amravati</p>
+        </div>
+        <p class="exp-period">Jan 2006 – Aug 2008</p>
+      </div>
       <p class="exp-role">Assistant Manager</p>
       <p class="exp-subrole">Operations &amp; Business Development</p>
       <ul class="exp-points">
@@ -324,54 +505,134 @@ footer{
 </section>
 
 <section id="education">
-  <div class="reveal"><div class="sec-tag">Education</div><h2 class="sec-title">Academic <em>foundation</em></h2></div>
-  <div class="edu-grid">
-    <div class="edu-card reveal d1"><p class="edu-year">2025 · Ongoing</p><p class="edu-degree">PGP — Advanced Strategic Management</p><p class="edu-inst">IIT Delhi</p></div>
-    <div class="edu-card reveal d1"><p class="edu-year">2023 – 2024</p><p class="edu-degree">PGP Certification — Renewable Energy</p><p class="edu-inst">UPES College of Management &amp; Economic Studies</p></div>
-    <div class="edu-card reveal d2"><p class="edu-year">2016</p><p class="edu-degree">MBA — Energy Trading</p><p class="edu-inst">UPES College of Management &amp; Economic Studies</p><p class="edu-score">CGPA: 3.48 / 4.0</p></div>
-    <div class="edu-card reveal d2"><p class="edu-year">2014</p><p class="edu-degree">BE — Mechanical Engineering</p><p class="edu-inst">YCCE, RTM Nagpur University</p><p class="edu-score">60.90%</p></div>
-    <div class="edu-card reveal d3"><p class="edu-year">2003</p><p class="edu-degree">12th — Maharashtra State Board</p><p class="edu-inst">SPM Junior College, Wani, Amravati</p></div>
-    <div class="edu-card reveal d3"><p class="edu-year">2001</p><p class="edu-degree">10th — Maharashtra State Board</p><p class="edu-inst">Lions English Medium High School, Wani</p></div>
-  </div>
   <div class="reveal">
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:1.4rem;">Academic Projects</p>
+    <div class="sec-tag">Education</div>
+    <h2 class="sec-title">Academic <em>foundation</em></h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal d1">
+      <p class="edu-year">2025 · Ongoing</p>
+      <p class="edu-degree">PGP — Advanced Strategic Management</p>
+      <p class="edu-inst">IIT Delhi</p>
+    </div>
+    <div class="edu-card reveal d1">
+      <p class="edu-year">2023 – 2024</p>
+      <p class="edu-degree">PGP Certification — Renewable Energy</p>
+      <p class="edu-inst">UPES College of Management &amp; Economic Studies</p>
+    </div>
+    <div class="edu-card reveal d2">
+      <p class="edu-year">2016</p>
+      <p class="edu-degree">MBA — Energy Trading</p>
+      <p class="edu-inst">UPES College of Management &amp; Economic Studies</p>
+      <p class="edu-score">CGPA: 3.48 / 4.0</p>
+    </div>
+    <div class="edu-card reveal d2">
+      <p class="edu-year">2014</p>
+      <p class="edu-degree">BE — Mechanical Engineering</p>
+      <p class="edu-inst">YCCE, RTM Nagpur University</p>
+      <p class="edu-score">60.90%</p>
+    </div>
+    <div class="edu-card reveal d3">
+      <p class="edu-year">2003</p>
+      <p class="edu-degree">12th — Maharashtra State Board</p>
+      <p class="edu-inst">SPM Junior College, Wani, Amravati</p>
+    </div>
+    <div class="edu-card reveal d3">
+      <p class="edu-year">2001</p>
+      <p class="edu-degree">10th — Maharashtra State Board</p>
+      <p class="edu-inst">Lions English Medium High School, Wani</p>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--ink);margin-bottom:2rem;">Academic Projects</p>
     <div class="proj-row">
-      <div class="proj-card"><p class="proj-tag">MBA Final Year · 8 Months</p><p class="proj-title">Study of LNG Pricing in Asia and its Trend</p><p class="proj-desc">Deep analysis of market patterns and trends in Asian natural gas LNG pricing.</p></div>
-      <div class="proj-card" style="border-left-color:var(--gold);"><p class="proj-tag">Summer Internship BE · 4 Weeks</p><p class="proj-title">Thermal Power Plant Operations</p><p class="proj-desc">Exposure at Koradi Thermal Power Training Centre, Nagpur — power generation and India's power scenario.</p></div>
-      <div class="proj-card" style="border-left-color:#8C6A50;"><p class="proj-tag">BE Final Year · 1 Year</p><p class="proj-title">Single / Double Hand &amp; Leg Ergometry Study</p><p class="proj-desc">Study of human ergometry while cranking at various lengths relative to variable loads using a fabricated setup.</p></div>
+      <div class="proj-card">
+        <p class="proj-tag">MBA Final Year · 8 Months</p>
+        <p class="proj-title">Study of LNG Pricing in Asia and its Trend</p>
+        <p class="proj-desc">Deep analysis of market patterns and trends in Asian natural gas LNG pricing.</p>
+      </div>
+      <div class="proj-card" style="border-left-color:var(--gold);">
+        <p class="proj-tag">Summer Internship BE · 4 Weeks</p>
+        <p class="proj-title">Thermal Power Plant Operations</p>
+        <p class="proj-desc">Exposure at Koradi Thermal Power Training Centre, Nagpur — power generation and India's power scenario.</p>
+      </div>
+      <div class="proj-card" style="border-left-color:#8C6A50;">
+        <p class="proj-tag">BE Final Year · 1 Year</p>
+        <p class="proj-title">Single / Double Hand &amp; Leg Ergometry Study</p>
+        <p class="proj-desc">Study of human ergometry while cranking at various lengths relative to variable loads using a fabricated setup.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="certifications">
-  <div class="reveal"><div class="sec-tag">Certifications</div><h2 class="sec-title">Credentials &amp; <em>expertise</em></h2></div>
+  <div class="reveal">
+    <div class="sec-tag">Certifications</div>
+    <h2 class="sec-title">Credentials &amp; <em>expertise</em></h2>
+  </div>
   <div class="cert-grid">
-    <div class="cert-card reveal d1"><div class="cert-icon" style="font-size:1.1rem;">🏆</div><p class="cert-title">IRM Global Level 1 — Enterprise Risk Management</p><p class="cert-sub">All India Rank holder · December 2020 · Institute of Risk Management, UK</p></div>
-    <div class="cert-card reveal d2"><div class="cert-icon" style="font-size:1.1rem;">⚡</div><p class="cert-title">EV Vehicles &amp; Infrastructure</p><p class="cert-sub">Certification covering electric vehicle technology and charging infrastructure.</p></div>
-    <div class="cert-card reveal d2"><div class="cert-icon" style="font-size:1.1rem;">💻</div><p class="cert-title">Hardware &amp; Networking Engineer</p><p class="cert-sub">Nagpur Jetking · 2010 – 2012</p></div>
-    <div class="cert-card reveal d3"><div class="cert-icon" style="font-size:1.1rem;">🔬</div><p class="cert-title">AEEE Internship — Energy Efficiency</p><p class="cert-sub">Alliance for an Energy Efficient Economy, New Delhi · Business planning, cash flow &amp; MIS · 8 weeks</p></div>
+    <div class="cert-card reveal d1">
+      <div class="cert-icon">🏆</div>
+      <p class="cert-title">IRM Global Level 1 — Enterprise Risk Management</p>
+      <p class="cert-sub">All India Rank holder · December 2020 · Institute of Risk Management, UK</p>
+    </div>
+    <div class="cert-card reveal d2">
+      <div class="cert-icon">⚡</div>
+      <p class="cert-title">EV Vehicles &amp; Infrastructure</p>
+      <p class="cert-sub">Certification covering electric vehicle technology and charging infrastructure.</p>
+    </div>
+    <div class="cert-card reveal d2">
+      <div class="cert-icon">💻</div>
+      <p class="cert-title">Hardware &amp; Networking Engineer</p>
+      <p class="cert-sub">Nagpur Jetking · 2010 – 2012</p>
+    </div>
+    <div class="cert-card reveal d3">
+      <div class="cert-icon">🔬</div>
+      <p class="cert-title">AEEE Internship — Energy Efficiency</p>
+      <p class="cert-sub">Alliance for an Energy Efficient Economy, New Delhi · Business planning, cash flow &amp; MIS · 8 weeks</p>
+    </div>
   </div>
 </section>
 
 <section id="awards">
-  <div class="reveal"><div class="sec-tag">Awards &amp; Recognition</div><h2 class="sec-title">Recognised for <em>excellence</em></h2></div>
+  <div class="reveal">
+    <div class="sec-tag">Awards &amp; Recognition</div>
+    <h2 class="sec-title">Recognised for <em>excellence</em></h2>
+  </div>
   <div class="awards-grid">
-    <div class="award-card reveal d1"><div class="award-ring" style="font-size:1.3rem;">🥇</div><p class="award-name">Employee of the Year</p><p class="award-year">2019 – 2021</p></div>
-    <div class="award-card reveal d1"><div class="award-ring" style="font-size:1.3rem;">⭐</div><p class="award-name">Award of Excellence</p><p class="award-year">2019 – 2021</p></div>
-    <div class="award-card reveal d2"><div class="award-ring" style="font-size:1.3rem;">🏅</div><p class="award-name">Employee of the Quarter Q3</p><p class="award-year">2019 – 2020</p></div>
-    <div class="award-card reveal d2"><div class="award-ring" style="font-size:1.3rem;">🏅</div><p class="award-name">Employee of the Quarter Q4</p><p class="award-year">2019 – 2020</p></div>
+    <div class="award-card reveal d1">
+      <div class="award-ring">🥇</div>
+      <p class="award-name">Employee of the Year</p>
+      <p class="award-year">2019 – 2021</p>
+    </div>
+    <div class="award-card reveal d1">
+      <div class="award-ring">⭐</div>
+      <p class="award-name">Award of Excellence</p>
+      <p class="award-year">2019 – 2021</p>
+    </div>
+    <div class="award-card reveal d2">
+      <div class="award-ring">🏅</div>
+      <p class="award-name">Employee of the Quarter Q3</p>
+      <p class="award-year">2019 – 2020</p>
+    </div>
+    <div class="award-card reveal d2">
+      <div class="award-ring">🏅</div>
+      <p class="award-name">Employee of the Quarter Q4</p>
+      <p class="award-year">2019 – 2020</p>
+    </div>
   </div>
   <div class="reveal">
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:1rem;">IT Skills</p>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--ink);margin-bottom:1.5rem;">IT Skills</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:2.5rem;">
       <span class="tag tag-s">MS Office Suite</span>
       <span class="tag tag-s">Windows OS</span>
       <span class="tag tag-s">CREO 1.0</span>
       <span class="tag tag-s">Computer Hardware</span>
       <span class="tag tag-s">Networking</span>
     </div>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:1rem;">Languages Known</p>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--ink);margin-bottom:1.5rem;">Languages Known</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
       <span class="tag tag-g">English</span>
       <span class="tag tag-g">Hindi</span>
       <span class="tag tag-g">Marathi</span>
@@ -387,13 +648,34 @@ footer{
   <div class="footer-right">
     <a href="tel:+919404667906">+91 9404667906</a>
     <a href="mailto:priyank.gharote3@gmail.com">priyank.gharote3@gmail.com</a>
+    <a href="https://www.linkedin.com/in/priyank-ambar-gharote-8a631569" target="_blank" style="margin-top: 5px; display: flex; align-items: center; gap: 5px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      LinkedIn Profile
+    </a>
     <p class="footer-loc">Pimpri-Chinchwad, Pune — Maharashtra, India</p>
   </div>
 </footer>
 
 <script>
+// Reveal Animation
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Mobile Menu Toggle
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
+
+mobileMenu.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
