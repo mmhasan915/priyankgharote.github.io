@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyank Ambar Gharote — Energy & Business Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --saffron:#E8650A;
+  --saffron-deep:#B84D00;
+  --saffron-light:#FDF0E6;
+  --saffron-pale:#FEF7F0;
+  --saffron-mid:#F07830;
+  --gold:#C8860A;
+  --gold-light:#FBF0D0;
+  --ink:#1C1008;
+  --ink-mid:#3D2810;
+  --muted:#8C6A50;
+  --border:#EDD9C8;
+  --border-light:#F5EBE2;
+  --cream:#FFFAF5;
+  --white:#ffffff;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden;}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,250,245,0.96);backdrop-filter:blur(16px);
+  border-bottom:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5rem;height:68px;
+}
+.nav-brand{display:flex;align-items:center;gap:14px;}
+.nav-monogram{
+  width:40px;height:40px;border-radius:10px;background:var(--saffron);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--white);
+}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--ink);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--saffron);}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:68px;}
+.hero-left{
+  background:var(--saffron);padding:5rem 5rem 5rem 6rem;
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+}
+.hero-left::before{
+  content:'';position:absolute;top:-80px;right:-80px;width:320px;height:320px;
+  border-radius:50%;background:rgba(255,255,255,0.07);
+}
+.hero-left::after{
+  content:'';position:absolute;bottom:-100px;left:-50px;width:260px;height:260px;
+  border-radius:50%;background:rgba(0,0,0,0.06);
+}
+.hero-eyebrow{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:1.8rem;font-weight:500;}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,4.8rem);
+  line-height:1.0;color:var(--white);margin-bottom:0.5rem;font-weight:600;
+}
+.hero-name em{font-style:italic;font-weight:400;display:block;}
+.hero-role{
+  font-size:0.9rem;color:rgba(255,255,255,0.85);font-weight:300;letter-spacing:0.06em;
+  margin-bottom:3rem;margin-top:1rem;
+  border-left:2px solid rgba(255,255,255,0.4);padding-left:1rem;
+}
+.hero-stats{display:flex;gap:0;margin-bottom:3.5rem;border-top:1px solid rgba(255,255,255,0.2);border-bottom:1px solid rgba(255,255,255,0.2);}
+.stat{flex:1;padding:1.3rem 1.4rem;border-right:1px solid rgba(255,255,255,0.2);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--white);line-height:1;font-weight:600;}
+.stat-label{font-size:0.67rem;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;}
+.hero-contact{display:flex;flex-direction:column;gap:9px;}
+.hero-contact-item{font-size:0.83rem;color:rgba(255,255,255,0.82);display:flex;align-items:center;gap:10px;}
+.hero-contact-item span{background:rgba(255,255,255,0.15);border-radius:6px;padding:3px 8px;font-size:0.68rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--white);font-weight:600;}
+
+.hero-right{background:var(--cream);padding:5rem 4rem 5rem 5rem;display:flex;flex-direction:column;justify-content:center;}
+.live-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--saffron-light);border:1.5px solid var(--border);
+  color:var(--saffron-deep);font-size:0.74rem;font-weight:600;letter-spacing:0.05em;
+  padding:7px 16px;border-radius:100px;margin-bottom:2.5rem;width:fit-content;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--saffron);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.mini-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--ink);margin-bottom:1.2rem;}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:2.5rem;}
+.comp-pill{
+  display:flex;align-items:center;gap:8px;background:var(--white);
+  border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;
+  font-size:0.77rem;color:var(--ink-mid);font-weight:500;transition:all 0.2s;
+}
+.comp-pill:hover{border-color:var(--saffron);background:var(--saffron-pale);color:var(--saffron-deep);transform:translateY(-2px);}
+.comp-dot{width:5px;height:5px;border-radius:50%;background:var(--saffron);flex-shrink:0;}
+
+section{padding:6rem 6rem;}
+.sec-tag{display:inline-flex;align-items:center;gap:8px;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:0.6rem;}
+.sec-tag::before{content:'';display:block;width:24px;height:2px;background:var(--saffron);}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.15;color:var(--ink);font-weight:600;margin-bottom:3.5rem;}
+.sec-title em{font-style:italic;color:var(--saffron);font-weight:400;}
+
+#experience{background:var(--white);}
+.exp-item{
+  display:grid;grid-template-columns:220px 1fr;gap:3.5rem;
+  padding:2.8rem 0;border-bottom:1.5px solid var(--border-light);
+}
+.exp-item:last-child{border-bottom:none;padding-bottom:0;}
+.exp-item:first-child{padding-top:0;}
+.exp-period{font-size:0.74rem;color:var(--muted);font-weight:500;letter-spacing:0.04em;margin-bottom:5px;}
+.exp-co{font-size:0.84rem;font-weight:600;color:var(--saffron-deep);margin-bottom:8px;line-height:1.3;}
+.exp-badge{display:inline-block;background:var(--saffron-light);color:var(--saffron-deep);font-size:0.67rem;font-weight:600;padding:3px 10px;border-radius:100px;letter-spacing:0.05em;}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.2;}
+.exp-subrole{font-size:0.79rem;color:var(--muted);margin-bottom:1rem;}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.exp-points li{font-size:0.85rem;color:var(--ink-mid);padding-left:1.3rem;position:relative;line-height:1.7;}
+.exp-points li::before{content:'›';position:absolute;left:0;color:var(--saffron);font-size:1.1rem;line-height:1.4;font-weight:600;}
+
+#education{background:var(--saffron-pale);}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.2rem;margin-bottom:3rem;}
+.edu-card{
+  background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.8rem;
+  transition:transform 0.2s,border-color 0.2s;position:relative;overflow:hidden;
+}
+.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--saffron);}
+.edu-card:hover{transform:translateY(-5px);border-color:var(--saffron-mid);}
+.edu-year{font-size:0.69rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:6px;}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.25;}
+.edu-inst{font-size:0.79rem;color:var(--saffron-deep);font-weight:500;}
+.edu-score{margin-top:8px;font-size:0.74rem;color:var(--muted);}
+.proj-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.2rem;}
+.proj-card{background:var(--white);border:1.5px solid var(--border);border-radius:0 12px 12px 0;border-left:4px solid var(--saffron);padding:1.5rem;}
+.proj-tag{font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:5px;}
+.proj-title{font-size:0.92rem;font-weight:600;color:var(--ink);margin-bottom:5px;line-height:1.3;}
+.proj-desc{font-size:0.79rem;color:var(--muted);line-height:1.65;}
+
+#certifications{background:var(--ink);}
+#certifications .sec-tag{color:#F07830;}
+#certifications .sec-tag::before{background:#F07830;}
+#certifications .sec-title{color:var(--white);}
+#certifications .sec-title em{color:#F07830;}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem;}
+.cert-card{
+  background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:14px;padding:1.6rem;transition:background 0.2s,border-color 0.2s;
+}
+.cert-card:hover{background:rgba(232,101,10,0.12);border-color:rgba(232,101,10,0.4);}
+.cert-icon{
+  width:42px;height:42px;border-radius:10px;background:rgba(232,101,10,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1rem;
+}
+.cert-title{font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:5px;line-height:1.3;}
+.cert-sub{font-size:0.77rem;color:rgba(255,255,255,0.5);line-height:1.55;}
+
+#awards{background:var(--white);}
+.awards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:4rem;}
+.award-card{
+  background:var(--saffron-light);border:1.5px solid var(--border);
+  border-radius:16px;padding:2rem 1.5rem;text-align:center;transition:transform 0.2s;
+}
+.award-card:hover{transform:translateY(-5px);}
+.award-ring{
+  width:54px;height:54px;border-radius:50%;background:var(--white);
+  border:2px solid var(--saffron-mid);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1rem;font-size:1.3rem;
+}
+.award-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.3;}
+.award-year{font-size:0.71rem;color:var(--muted);font-weight:500;}
+.tag{padding:8px 18px;border-radius:100px;font-size:0.77rem;font-weight:600;display:inline-block;}
+.tag-s{background:var(--saffron-light);color:var(--saffron-deep);border:1.5px solid var(--border);}
+.tag-g{background:var(--gold-light);color:#7A5000;border:1.5px solid #EDD9A0;}
+
+footer{
+  background:var(--saffron);padding:4rem 6rem;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;
+}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);margin-bottom:4px;}
+.footer-sub{font-size:0.82rem;color:rgba(255,255,255,0.75);}
+.footer-right{display:flex;flex-direction:column;gap:8px;text-align:right;}
+.footer-right a{font-size:0.85rem;color:rgba(255,255,255,0.9);text-decoration:none;font-weight:500;}
+.footer-right a:hover{color:var(--white);}
+.footer-loc{font-size:0.74rem;color:rgba(255,255,255,0.6);}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.in{opacity:1;transform:none;}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;}
+  .hero-left,.hero-right{padding:4rem 2rem;}
+  section{padding:5rem 2rem;}
+  nav{padding:0 2rem;}
+  .exp-item{grid-template-columns:1fr;gap:0.6rem;}
+  .awards-grid{grid-template-columns:repeat(2,1fr);}
+  footer{grid-template-columns:1fr;padding:3rem 2rem;text-align:center;}
+  .footer-right{text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-monogram">PAG</div>
+    <span class="nav-name">Priyank Ambar Gharote</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Senior Manager · Renewable Energy · Maharashtra</p>
+    <h1 class="hero-name">Priyank<em>Ambar Gharote</em></h1>
+    <div class="hero-role">Business Development &nbsp;·&nbsp; Energy Trading &nbsp;·&nbsp; Consulting</div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">9+</div><div class="stat-label">Years Exp.</div></div>
+      <div class="stat"><div class="stat-num">RE</div><div class="stat-label">Sector Focus</div></div>
+      <div class="stat"><div class="stat-num">MH</div><div class="stat-label">Region Head</div></div>
+    </div>
+    <div class="hero-contact">
+      <div class="hero-contact-item"><span>Phone</span> +91 9404667906</div>
+      <div class="hero-contact-item"><span>Email</span> priyank.gharote3@gmail.com</div>
+      <div class="hero-contact-item"><span>City</span> Pimpri-Chinchwad, Pune</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="live-badge"><span class="live-dot"></span> Hero Future Energies · Active</div>
+    <p class="mini-title">Core Competencies</p>
+    <div class="comp-grid">
+      <div class="comp-pill"><span class="comp-dot"></span>Business Intelligence</div>
+      <div class="comp-pill"><span class="comp-dot"></span>Functional Consulting</div>
+      <div class="comp-pill"><span class="comp-dot"></span>Project Management</div>
+      <div class="comp-pill"><span class="comp-dot"></span>Renewable Energy</div>
+      <div class="comp-pill"><span class="comp-dot"></span>Power Exchange Ops</div>
+      <div class="comp-pill"><span class="comp-dot"></span>Risk Management</div>
+      <div class="comp-pill"><span class="comp-dot"></span>Team Management</div>
+      <div class="comp-pill"><span class="comp-dot"></span>Client Relationships</div>
+    </div>
+    <p style="font-size:0.87rem;color:var(--muted);line-height:1.8;max-width:380px;">Result-oriented professional with 9+ years driving growth in Renewable Energy, Business Analytics, Energy Trading, and Consulting across India's leading energy organisations.</p>
+  </div>
+</div>
+
+<section id="experience">
+  <div class="reveal"><div class="sec-tag">Work Experience</div><h2 class="sec-title">A decade of<br><em>impactful leadership</em></h2></div>
+
+  <div class="exp-item reveal d1">
+    <div>
+      <p class="exp-period">May 2023 – Present</p>
+      <p class="exp-co">Hero Future Energies Pvt. Ltd.<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">Renewable Arm of Hero Group</span></p>
+      <span class="exp-badge">Current Role</span>
+    </div>
+    <div>
+      <p class="exp-role">Senior Manager — Commercial &amp; Industrial</p>
+      <p class="exp-subrole">Business Development Head, Maharashtra</p>
+      <ul class="exp-points">
+        <li>Developed and maintained a robust sales funnel for RE projects across Maharashtra — from lead generation through to deal closure.</li>
+        <li>Formulated strategies for Group Captive, VPPA, and 3rd Party structures ensuring alignment with client needs and regulatory requirements.</li>
+        <li>Spearheaded coordination with DISCOMs, MSETCL, MHSLDC, MERC, and MEDA officials for regulatory and operational matters.</li>
+        <li>Engaged with top management and Government of Maharashtra on strategic RE &amp; H2 project investments in the state.</li>
+        <li>Managed power sales from existing RE projects under third-party arrangements, aligned to annual operating plans.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item reveal d1">
+    <div>
+      <p class="exp-period">Jan 2016 – May 2023</p>
+      <p class="exp-co">Kreate Energy I Pvt. Ltd.<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">Mittal Processor Pvt. Ltd., Pune</span></p>
+      <span class="exp-badge">7 Years</span>
+    </div>
+    <div>
+      <p class="exp-role">Power &amp; Natural Gas Procurement Consultant</p>
+      <p class="exp-subrole">Business Development Head</p>
+      <ul class="exp-points">
+        <li>Formulated and implemented strategies for renewable &amp; firm power and natural gas procurement through bilateral OTC, Exchange, and market expansion.</li>
+        <li>Provided advisory and consultancy support for Third Party, Captive, Group Captive, and Exchange renewable energy structures.</li>
+        <li>Identified and developed prospective clients across Maharashtra, Madhya Pradesh, and East &amp; North East India.</li>
+        <li>Managed state teams for effective business strategy implementation; reported directly to MD and VP.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item reveal d2">
+    <div>
+      <p class="exp-period">Feb 2016 – Jan 2017</p>
+      <p class="exp-co">Manikaran Power Ltd.<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">Mumbai</span></p>
+      <span class="exp-badge">BD</span>
+    </div>
+    <div>
+      <p class="exp-role">Power Procurement Consultant</p>
+      <p class="exp-subrole">Business Development</p>
+      <ul class="exp-points">
+        <li>Formulated strategies for power procurement through bilateral OTC and Power Exchange.</li>
+        <li>Conducted comparative market studies and analysed central and state government power regulations.</li>
+        <li>Managed client requirement gathering and finalization of functional specifications.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item reveal d2">
+    <div>
+      <p class="exp-period">Jan 2006 – Aug 2008</p>
+      <p class="exp-co">ShriKrupa Calibration &amp; Service Centre<br><span style="font-weight:300;color:var(--muted);font-size:0.77rem;">NABL Certified · Amravati</span></p>
+      <span class="exp-badge">Early Career</span>
+    </div>
+    <div>
+      <p class="exp-role">Assistant Manager</p>
+      <p class="exp-subrole">Operations &amp; Business Development</p>
+      <ul class="exp-points">
+        <li>Led, mentored, and monitored team performance to ensure efficiency and target achievement.</li>
+        <li>Implemented incentive programmes and developed KPI dashboards for business tracking.</li>
+        <li>Managed day-to-day operations, front office support, and ISI certification processes.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="reveal"><div class="sec-tag">Education</div><h2 class="sec-title">Academic <em>foundation</em></h2></div>
+  <div class="edu-grid">
+    <div class="edu-card reveal d1"><p class="edu-year">2025 · Ongoing</p><p class="edu-degree">PGP — Advanced Strategic Management</p><p class="edu-inst">IIT Delhi</p></div>
+    <div class="edu-card reveal d1"><p class="edu-year">2023 – 2024</p><p class="edu-degree">PGP Certification — Renewable Energy</p><p class="edu-inst">UPES College of Management &amp; Economic Studies</p></div>
+    <div class="edu-card reveal d2"><p class="edu-year">2016</p><p class="edu-degree">MBA — Energy Trading</p><p class="edu-inst">UPES College of Management &amp; Economic Studies</p><p class="edu-score">CGPA: 3.48 / 4.0</p></div>
+    <div class="edu-card reveal d2"><p class="edu-year">2014</p><p class="edu-degree">BE — Mechanical Engineering</p><p class="edu-inst">YCCE, RTM Nagpur University</p><p class="edu-score">60.90%</p></div>
+    <div class="edu-card reveal d3"><p class="edu-year">2003</p><p class="edu-degree">12th — Maharashtra State Board</p><p class="edu-inst">SPM Junior College, Wani, Amravati</p></div>
+    <div class="edu-card reveal d3"><p class="edu-year">2001</p><p class="edu-degree">10th — Maharashtra State Board</p><p class="edu-inst">Lions English Medium High School, Wani</p></div>
+  </div>
+  <div class="reveal">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);margin-bottom:1.4rem;">Academic Projects</p>
+    <div class="proj-row">
+      <div class="proj-card"><p class="proj-tag">MBA Final Year · 8 Months</p><p class="proj-title">Study of LNG Pricing in Asia and its Trend</p><p class="proj-desc">Deep analysis of market patterns and trends in Asian natural gas LNG pricing.</p></div>
+      <div class="proj-card" style="border-left-color:var(--gold);"><p class="proj-tag">Summer Internship BE · 4 Weeks</p><p class="proj-title">Thermal Power Plant Operations</p><p class="proj-desc">Exposure at Koradi Thermal Power Training Centre, Nagpur — power generation and India's power scenario.</p></div>
+      <div class="proj-card" style="border-left-color:#8C6A50;"><p class="proj-tag">BE Final Year · 1 Year</p><p class="proj-title">Single / Double Hand &amp; Leg Ergometry Study</p><p class="proj-desc">Study of human ergometry while cranking at various lengths relative to variable loads using a fabricated setup.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="reveal"><div class="sec-tag">Certifications</div><h2 class="sec-title">Credentials &amp; <em>expertise</em></h2></div>
+  <div class="cert-grid">
+    <div class="cert-card reveal d1"><div class="cert-icon" style="font-size:1.1rem;">🏆</div><p class="cert-title">IRM Global Level 1 — Enterprise Risk Management</p><p class="cert-sub">All India Rank holder · December 2020 · Institute of Risk Management, UK</p></div>
+    <div class="cert-card reveal d2"><div class="cert-icon" style="font-size:1.1rem;">⚡</div><p class="cert-title">EV Vehicles &amp; Infrastructure</p><p class="cert-sub">Certification covering electric vehicle technology and charging infrastructure.</p></div>
+    <div class="cert-card reveal d2"><div class="cert-icon" style="font-size:1.1rem;">💻</div><p class="cert-title">Hardware &amp; Networking Engineer</p><p class="cert-sub">Nagpur Jetking · 2010 – 2012</p></div>
+    <div class="cert-card reveal d3"><div class="cert-icon" style="font-size:1.1rem;">🔬</div><p class="cert-title">AEEE Internship — Energy Efficiency</p><p class="cert-sub">Alliance for an Energy Efficient Economy, New Delhi · Business planning, cash flow &amp; MIS · 8 weeks</p></div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="reveal"><div class="sec-tag">Awards &amp; Recognition</div><h2 class="sec-title">Recognised for <em>excellence</em></h2></div>
+  <div class="awards-grid">
+    <div class="award-card reveal d1"><div class="award-ring" style="font-size:1.3rem;">🥇</div><p class="award-name">Employee of the Year</p><p class="award-year">2019 – 2021</p></div>
+    <div class="award-card reveal d1"><div class="award-ring" style="font-size:1.3rem;">⭐</div><p class="award-name">Award of Excellence</p><p class="award-year">2019 – 2021</p></div>
+    <div class="award-card reveal d2"><div class="award-ring" style="font-size:1.3rem;">🏅</div><p class="award-name">Employee of the Quarter Q3</p><p class="award-year">2019 – 2020</p></div>
+    <div class="award-card reveal d2"><div class="award-ring" style="font-size:1.3rem;">🏅</div><p class="award-name">Employee of the Quarter Q4</p><p class="award-year">2019 – 2020</p></div>
+  </div>
+  <div class="reveal">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:1rem;">IT Skills</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem;">
+      <span class="tag tag-s">MS Office Suite</span>
+      <span class="tag tag-s">Windows OS</span>
+      <span class="tag tag-s">CREO 1.0</span>
+      <span class="tag tag-s">Computer Hardware</span>
+      <span class="tag tag-s">Networking</span>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--ink);margin-bottom:1rem;">Languages Known</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span class="tag tag-g">English</span>
+      <span class="tag tag-g">Hindi</span>
+      <span class="tag tag-g">Marathi</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <p class="footer-name">Priyank Ambar Gharote</p>
+    <p class="footer-sub">Senior Manager · Renewable Energy · Hero Future Energies</p>
+  </div>
+  <div class="footer-right">
+    <a href="tel:+919404667906">+91 9404667906</a>
+    <a href="mailto:priyank.gharote3@gmail.com">priyank.gharote3@gmail.com</a>
+    <p class="footer-loc">Pimpri-Chinchwad, Pune — Maharashtra, India</p>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
